@@ -145,14 +145,79 @@
   }
   .nav .cta:hover{transform:translateY(-1px);background:#3d3258}
   .nav .cta svg{width:16px;height:16px}
+  /* hamburger button */
+  .nav-burger{
+    display:none;
+    width:38px;height:38px;border-radius:50%;
+    background:rgba(42,33,64,0.07);border:1px solid rgba(42,33,64,0.1);
+    align-items:center;justify-content:center;cursor:pointer;
+    color:var(--ink);transition:background .2s;flex:0 0 auto;
+    padding:0;
+  }
+  .nav-burger:hover{background:rgba(42,33,64,0.14)}
+  .nav-burger .bar{
+    display:block;width:16px;height:1.5px;background:currentColor;
+    border-radius:2px;transition:transform .28s ease, opacity .2s ease;
+    transform-origin:center;
+  }
+  .nav-burger .bars{display:flex;flex-direction:column;gap:4px;align-items:center}
+  .nav-burger.open .bar:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+  .nav-burger.open .bar:nth-child(2){opacity:0;transform:scaleX(0)}
+  .nav-burger.open .bar:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+
+  /* mobile dropdown */
+  .nav-drawer{
+    position:fixed;top:0;left:50%;transform:translateX(-50%);
+    z-index:49;
+    width:calc(100vw - 28px);max-width:480px;
+    padding-top:70px;
+    pointer-events:none;
+  }
+  .nav-drawer-inner{
+    background:rgba(255,251,240,0.92);
+    backdrop-filter:blur(24px) saturate(160%);
+    -webkit-backdrop-filter:blur(24px) saturate(160%);
+    border:1px solid rgba(255,255,255,0.5);
+    border-radius:28px;
+    box-shadow:0 20px 50px -18px rgba(42,33,64,0.4), inset 0 1px 0 rgba(255,255,255,0.7);
+    overflow:hidden;
+    max-height:0;
+    opacity:0;
+    transition:max-height .38s cubic-bezier(.2,.8,.2,1), opacity .28s ease;
+  }
+  .nav-drawer.open{pointer-events:all}
+  .nav-drawer.open .nav-drawer-inner{max-height:460px;opacity:1}
+  .nav-drawer ul{
+    list-style:none;margin:0;padding:16px 16px 8px;
+    display:flex;flex-direction:column;gap:2px;
+  }
+  .nav-drawer ul li a{
+    display:block;padding:13px 16px;
+    border-radius:14px;
+    font-size:16px;font-weight:500;color:var(--ink);
+    text-decoration:none;
+    transition:background .18s;
+  }
+  .nav-drawer ul li a:hover{background:rgba(42,33,64,0.07)}
+  .nav-drawer .drawer-cta{
+    margin:4px 16px 16px;
+    display:flex;align-items:center;gap:9px;justify-content:center;
+    background:#25D366;color:#fff;font-weight:600;font-size:15px;
+    padding:14px 20px;border-radius:999px;text-decoration:none;
+    transition:transform .2s,box-shadow .2s;
+  }
+  .nav-drawer .drawer-cta:hover{transform:translateY(-2px);box-shadow:0 12px 28px -8px rgba(37,211,102,0.5)}
+  .nav-drawer .drawer-cta svg{width:18px;height:18px;flex:0 0 auto}
+
   @media(max-width:860px){
     .nav ul{display:none}
+    .nav-burger{display:inline-flex}
   }
 
   /* ----------- shell ----------- */
   main{position:relative;z-index:2}
-  section{position:relative;padding:120px 32px;max-width:1240px;margin:0 auto}
-  @media(max-width:680px){section{padding:90px 22px}}
+  section{position:relative;padding:80px 32px;max-width:1240px;margin:0 auto}
+  @media(max-width:680px){section{padding:60px 22px}}
 
   /* tag */
   .tag{
@@ -168,7 +233,11 @@
   .lead{color:var(--ink-soft);font-size:18px;line-height:1.55;max-width:560px}
 
   /* ----------- HERO ----------- */
-  .hero{padding-top:170px;padding-bottom:80px;position:relative}
+  .hero{padding-top:160px;padding-bottom:56px;position:relative}
+  @media(max-width:680px){
+    .hero{padding-top:90px;padding-bottom:40px}
+    .hero h1{margin-top:12px}
+  }
   .hero .bolt-bg{
     position:absolute;
     left:50%;top:54%;
@@ -307,7 +376,7 @@
 
   /* ----------- 3D scroll services ----------- */
   .services{padding-top:60px}
-  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:50px;flex-wrap:wrap}
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:40px;flex-wrap:wrap}
   .section-head h2{font-size:clamp(38px,5.2vw,68px);line-height:1.0;max-width:680px}
   .section-head .lead{margin:0}
 
@@ -445,7 +514,7 @@
   .svc .float{position:absolute;font-family:'Fredoka',sans-serif;font-weight:700;color:var(--ink);font-size:28px;opacity:0.9;pointer-events:none}
 
   /* ----------- how to hire ----------- */
-  .hire{background:linear-gradient(180deg,transparent, rgba(178,226,242,0.25) 30%, transparent 100%);max-width:none;padding:140px 32px}
+  .hire{background:linear-gradient(180deg,transparent, rgba(178,226,242,0.25) 30%, transparent 100%);max-width:none;padding:96px 32px}
   .hire-inner{max-width:1240px;margin:0 auto}
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:54px}
   @media(max-width:880px){.steps{grid-template-columns:1fr}}
@@ -467,7 +536,7 @@
   /* ----------- booking form ----------- */
   .book-form{
     margin-top:54px; background:#fff; border:1px solid var(--line);
-    border-radius:32px; padding:44px 48px; position:relative; overflow:hidden;
+    border-radius:32px; padding:60px 48px; position:relative; overflow:visible;
   }
   .book-form::before{
     content:''; position:absolute; inset:0; pointer-events:none;
@@ -521,10 +590,23 @@
     position:absolute; top:calc(100% + 8px); left:0; right:0; z-index:300;
     background:#fff; border:1.5px solid var(--line); border-radius:16px;
     box-shadow:0 22px 56px -16px rgba(42,33,64,0.38), 0 6px 16px -8px rgba(42,33,64,0.18);
-    max-height:320px; overflow-y:auto;
+    max-height:220px; overflow-y:auto;
     opacity:0; pointer-events:none; transform:translateY(-6px);
     transition:opacity .22s ease, transform .22s ease;
   }
+  /* Visual hint that the list is scrollable (fade at bottom) */
+  .prop-dd-list.open::after{
+    content:''; position:absolute; left:8px; right:8px; bottom:8px; height:32px;
+    pointer-events:none; border-radius:12px;
+    background:linear-gradient(180deg, rgba(255,255,255,0), rgba(42,33,64,0.06));
+  }
+  
+  /* Custom scrollbar (WebKit) */
+  .prop-dd-list::-webkit-scrollbar{ width:10px; }
+  .prop-dd-list::-webkit-scrollbar-track{ background:transparent; }
+  .prop-dd-list::-webkit-scrollbar-thumb{ background:rgba(42,33,64,0.12); border-radius:8px; }
+  /* Firefox scrollbar color */
+  .prop-dd-list{ scrollbar-color: rgba(42,33,64,0.12) transparent; scrollbar-width: thin; }
   .prop-dd-list.open{ opacity:1; pointer-events:all; transform:translateY(0); }
   .prop-dd-opt{
     display:flex; align-items:center; gap:11px;
@@ -546,7 +628,7 @@
     position:absolute; top:calc(100% + 8px); left:0; z-index:300;
     background:#fff; border:1.5px solid var(--line); border-radius:20px; padding:18px;
     box-shadow:0 22px 56px -16px rgba(42,33,64,0.38), 0 6px 16px -8px rgba(42,33,64,0.18);
-    width:300px; opacity:0; pointer-events:none;
+    width:360px; opacity:0; pointer-events:none;
     transform:translateY(-6px);
     transition:opacity .25s ease, transform .25s ease;
   }
@@ -1087,7 +1169,7 @@
 
   /* ============= Mobile polish ============= */
   @media (max-width:760px){
-    section{padding:80px 20px}
+    section{padding:56px 20px}
     .hero{padding-top:130px;padding-bottom:40px}
     .hero h1{font-size:clamp(42px,11vw,68px);line-height:1.0}
     .hero h1 .pill{padding:0 16px 3px}
@@ -1098,7 +1180,7 @@
     .stat{padding:14px 12px;border-radius:16px}
     .stat .n{font-size:26px}
     .stat .l{font-size:11px}
-    .section-head{margin-bottom:32px;gap:16px}
+    .section-head{margin-bottom:26px;gap:16px}
     .section-head h2{font-size:clamp(32px,8vw,44px)}
     .lead{font-size:15px}
     .tag{font-size:11px;padding:6px 12px}
@@ -1142,6 +1224,38 @@
     .svc:hover, .addon:hover, .special:hover, .step:hover, .gcard:hover, .tcard:hover,
     .socials a:hover, .btn:hover{transform:none}
   }
+
+  /* ----------- faq ----------- */
+  .faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+  .faq-item{
+    background:#fff;border:1px solid var(--line);
+    border-radius:24px;overflow:hidden;
+    transition:box-shadow .2s;
+  }
+  .faq-item.open{box-shadow:0 12px 32px -14px rgba(42,33,64,0.2)}
+  .faq-q{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    width:100%;padding:22px 24px;cursor:pointer;text-align:left;
+    background:transparent;border:none;
+    font-family:inherit;font-size:16px;font-weight:600;color:var(--ink);line-height:1.3;
+  }
+  .faq-q:hover{color:var(--ink-soft)}
+  .faq-icon{
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;
+    background:var(--cream-2);display:flex;align-items:center;justify-content:center;
+    transition:background .2s,transform .3s ease;
+  }
+  .faq-item.open .faq-icon{background:var(--lila);transform:rotate(45deg)}
+  .faq-icon svg{width:14px;height:14px}
+  .faq-a-wrap{
+    max-height:0;overflow:hidden;
+    transition:max-height .36s cubic-bezier(.2,.8,.2,1);
+  }
+  .faq-item.open .faq-a-wrap{max-height:220px}
+  .faq-a{
+    padding:0 24px 22px;
+    font-size:15px;line-height:1.65;color:var(--ink-soft);margin:0;
+  }
 </style>
 </head>
 <body>
@@ -1169,7 +1283,32 @@
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 1.8.8 2.5.8 3.3.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.2.8.8-3.1-.2-.3c-.9-1.4-1.3-3-1.3-4.6 0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8.6-8 8.6z"/></svg>
     WhatsApp
   </a>
+  <button class="nav-burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navDrawer">
+    <span class="bars">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </span>
+  </button>
 </nav>
+
+<!-- mobile nav drawer -->
+<div class="nav-drawer" id="navDrawer" aria-hidden="true">
+  <div class="nav-drawer-inner">
+    <ul>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#complementos">Complementos</a></li>
+      <li><a href="#eventos">Eventos</a></li>
+      <li><a href="#sobre">Sobre mí</a></li>
+      <li><a href="#contratar">Contratar</a></li>
+      <li><a href="#preguntas">Preguntas frecuentes</a></li>
+    </ul>
+    <a href="https://wa.me/5491122370215" target="_blank" rel="noopener" class="drawer-cta">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 1.8.8 2.5.8 3.3.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.2.8.8-3.1-.2-.3c-.9-1.4-1.3-3-1.3-4.6 0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8.6-8 8.6z"/></svg>
+      Escribir por WhatsApp
+    </a>
+  </div>
+</div>
 
 <main>
 
@@ -1183,14 +1322,14 @@
   <div class="hero-grid">
     <div>
       <span class="tag"><span class="dot"></span> Animación infantil · Buenos Aires</span>
-      <h1 style="font-size: 104px">MICALU
+      <h1>MICALU
 <span class="word"><span class="pill pink">festejamos</span></span>
 <span class="word"><span class="pill yellow">jugando</span></span>,
 <span class="word"><span class="pill blue">creando</span></span> y
 <span class="word"><span class="pill lila">brillando</span></span> ✦</h1>
       <p class="lead">Soy Cami. Llevo más de 9 años creando experiencias mágicas para cumpleaños, eventos y talleres. Slime, burbujas, maquillaje artístico, spa party y mucho más — en tu casa o en salones.</p>
       <div class="hero-actions">
-        <a href="https://wa.me/5491122370215" target="_blank" rel="noopener" class="btn btn-wa">
+        <a href="#reservar" class="btn btn-wa">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 1.8.8 2.5.8 3.3.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.2.8.8-3.1-.2-.3c-.9-1.4-1.3-3-1.3-4.6 0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8.6-8 8.6z"/></svg>
           Reservar fecha
         </a>
@@ -1574,7 +1713,8 @@
         <div>
           <label class="f-label" for="bfFecha">Fecha del evento</label>
           <div class="date-wrap">
-            <input class="f-input f-input-date" id="bfFecha" type="text" placeholder="Seleccioná una fecha" readonly />
+            <button type="button" class="f-input f-input-date" id="bfFechaBtn" aria-haspopup="dialog" aria-controls="bfCal" aria-expanded="false">Seleccioná una fecha</button>
+            <input type="hidden" id="bfFecha" name="bfFecha" />
             <div class="cal-drop" id="bfCal">
               <div class="cal-nav-row">
                 <button type="button" class="cal-btn" id="bfCalPrev" aria-label="Mes anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
@@ -1697,8 +1837,70 @@
   </div>
 </section>
 
+<!-- ============= FAQ ============= -->
+<section id="preguntas" data-screen-label="faq">
+  <div class="section-head">
+    <div>
+      <span class="tag"><span class="dot" style="background:var(--lila);box-shadow:0 0 0 4px rgba(209,196,233,0.3)"></span> Preguntas frecuentes</span>
+      <h2 style="margin-top:16px">Todo lo que querés<br>saber <span class="italic">antes de reservar</span>.</h2>
+    </div>
+  </div>
+
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        ¿A qué zonas de Buenos Aires llegás?
+        <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></span>
+      </button>
+      <div class="faq-a-wrap"><p class="faq-a">Trabajo en Capital Federal y Gran Buenos Aires (zona norte, oeste y sur). Para eventos fuera del AMBA consultame por WhatsApp y vemos la posibilidad con viático incluido.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        ¿Cuánto dura la animación?
+        <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></span>
+      </button>
+      <div class="faq-a-wrap"><p class="faq-a">El tiempo mínimo es de 2 horas. Según el servicio y la cantidad de actividades, podemos armar propuestas de 2, 3 o más horas. Contame cómo imaginás la fiesta y lo ajustamos a tu evento.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        ¿Cuántos chicos pueden participar?
+        <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></span>
+      </button>
+      <div class="faq-a-wrap"><p class="faq-a">¡No hay límite! Para grupos grandes (más de 15 niños) te recomiendo sumar una animadora extra para que todos puedan disfrutar sin esperas. Consultame y armamos el equipo ideal para tu evento.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        ¿Los materiales para los talleres están incluidos?
+        <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></span>
+      </button>
+      <div class="faq-a-wrap"><p class="faq-a">Sí, llevo todo lo necesario: materiales, herramientas y todo el equipamiento para la actividad. Vos solo ponés el espacio y las ganas de jugar.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        ¿Con cuánta anticipación tengo que reservar?
+        <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></span>
+      </button>
+      <div class="faq-a-wrap"><p class="faq-a">Cuanto antes, mejor. Los fines de semana se reservan rápido, sobre todo en temporada alta. Te recomiendo contactarme con al menos 2 o 3 semanas de anticipación para asegurar tu fecha.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        ¿Cómo se confirma la reserva?
+        <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></span>
+      </button>
+      <div class="faq-a-wrap"><p class="faq-a">La reserva se confirma con una seña. Una vez acordados los detalles por WhatsApp, te paso los datos para hacer la transferencia y la fecha queda asegurada para vos.</p></div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ============= FINAL CTA ============= -->
-<section style="padding-top:40px;padding-bottom:0">
+<section style="padding-top:24px;padding-bottom:0">
   <div class="final" data-screen-label="cta-final">
     <div>
       <span class="tag" style="background:rgba(255,251,240,0.12);border-color:rgba(255,251,240,0.18);color:var(--cream)"><span class="dot" style="background:var(--yellow)"></span> ¿Listos para festejar?</span>
@@ -2143,6 +2345,7 @@
   var calEl = document.getElementById('bfCal');
   var calBody = document.getElementById('bfCalBody');
   var calTitle = document.getElementById('bfCalTitle');
+  var fFechaBtn = document.getElementById('bfFechaBtn');
   var fFecha = document.getElementById('bfFecha');
 
   function renderCal(){
@@ -2174,7 +2377,9 @@
         var mm = String(selDate.getMonth()+1).padStart(2,'0');
         var yy = selDate.getFullYear();
         fFecha.value = dd + '/' + mm + '/' + yy;
-        fFecha.classList.remove('has-error');
+        // update visible button text and clear error state
+        fFechaBtn.textContent = fFecha.value;
+        fFechaBtn.classList.remove('has-error');
         closeCalendar();
         renderCal();
       });
@@ -2184,17 +2389,30 @@
   function openCalendar(){
     calEl.classList.add('open');
     calOpen = true;
+    fFechaBtn.setAttribute('aria-expanded','true');
     renderCal();
   }
   function closeCalendar(){
     calEl.classList.remove('open');
     calOpen = false;
+    fFechaBtn.setAttribute('aria-expanded','false');
   }
 
-  fFecha.addEventListener('click', function(e){
+  fFechaBtn.addEventListener('click', function(e){
     e.stopPropagation();
     if(calOpen) closeCalendar(); else openCalendar();
   });
+  // Prevent manual typing/pasting/dropping into the date field — only allow selection via calendar
+  // Keyboard accessibility for the visible button (Enter/Space already work on buttons)
+  fFechaBtn.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      if(calOpen) closeCalendar(); else openCalendar();
+    }
+  });
+  // Prevent paste/drop on hidden input (defensive)
+  fFecha.addEventListener('paste', function(e){ e.preventDefault(); });
+  fFecha.addEventListener('drop', function(e){ e.preventDefault(); });
   document.getElementById('bfCalPrev').addEventListener('click', function(e){
     e.stopPropagation();
     calMonth--;
@@ -2235,7 +2453,7 @@
     if(!zona)                    { shakeField(document.getElementById('bfZona'));     valid = false; }
     if(!selectedProp)            { document.getElementById('bfPropWrap').classList.add('chips-error'); valid = false; }
     if(!cantidad || parseInt(cantidad) < 1) { shakeField(document.getElementById('bfCantidad')); valid = false; }
-    if(!fecha)                   { shakeField(document.getElementById('bfFecha'));    valid = false; }
+    if(!fecha)                   { shakeField(document.getElementById('bfFechaBtn'));    valid = false; }
     if(!hora)                    { shakeField(document.getElementById('bfHora'));     valid = false; }
 
     if(!valid) return;
@@ -2244,20 +2462,76 @@
     var fechaMsg = parts[0] + ' de ' + MONTHS[parseInt(parts[1])-1] + ' de ' + parts[2];
 
     var NL = '\n';
-    var msg = '\u00a1Hola Cami! \uD83C\uDF89 Quiero consultar sobre una fecha con Mical\u00fa:' + NL + NL
-      + '\uD83D\uDC64 *Nombre:* '             + nombre       + NL
-      + '\uD83D\uDCCD *Zona:* '               + zona         + NL
-      + '\uD83C\uDF88 *Propuesta:* '          + selectedProp + NL
-      + '\uD83D\uDC67 *Cantidad de chicos:* ' + cantidad     + NL
-      + '\uD83D\uDCC5 *Fecha:* '              + fechaMsg     + NL
-      + '\u23F0 *Hora:* '                     + hora         + ' hs' + NL + NL
-      + '\u00a1Espero tu respuesta! \u2728';
+    var msg = '¡Hola Cami! 🎉 Quiero consultar sobre una fecha con Micalú:' + NL + NL
+      + '👤 *Nombre:* '             + nombre       + NL
+      + '📍 *Zona:* '               + zona         + NL
+      + '🎈 *Propuesta:* '          + selectedProp + NL
+      + '👧 *Cantidad de chicos:* ' + cantidad     + NL
+      + '📅 *Fecha:* '              + fechaMsg     + NL
+      + '⏰ *Hora:* '               + hora         + ' hs' + NL + NL
+      + '¡Espero tu respuesta! ✨';
 
     window.open('https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
   });
 
   /* init */
   renderCal();
+})();
+
+/* ============= faq accordion ============= */
+(function(){
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var btn = item.querySelector('.faq-q');
+    if(!btn) return;
+    btn.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(other){
+        other.classList.remove('open');
+        other.querySelector('.faq-q').setAttribute('aria-expanded','false');
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded','true');
+      }
+    });
+  });
+})();
+
+/* ============= hamburger mobile menu ============= */
+(function(){
+  var burger = document.getElementById('navBurger');
+  var drawer = document.getElementById('navDrawer');
+  if(!burger || !drawer) return;
+
+  function openMenu(){
+    burger.classList.add('open');
+    drawer.classList.add('open');
+    burger.setAttribute('aria-expanded','true');
+    drawer.setAttribute('aria-hidden','false');
+  }
+  function closeMenu(){
+    burger.classList.remove('open');
+    drawer.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+    drawer.setAttribute('aria-hidden','true');
+  }
+  function toggleMenu(){ burger.classList.contains('open') ? closeMenu() : openMenu(); }
+
+  burger.addEventListener('click', function(e){ e.stopPropagation(); toggleMenu(); });
+
+  drawer.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('click', function(e){
+    if(drawer.classList.contains('open') && !drawer.contains(e.target) && !burger.contains(e.target)){
+      closeMenu();
+    }
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && drawer.classList.contains('open')) closeMenu();
+  });
 })();
 </script>
 
