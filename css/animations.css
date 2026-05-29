@@ -1,0 +1,23 @@
+/* animations.css — @keyframes definitions. Resolved by name, order-independent. */
+
+  @keyframes hover-float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-14px)}
+  }
+  @keyframes hover-rot{
+    0%,100%{transform:translateY(0) rotate(14deg)}
+    50%{transform:translateY(-12px) rotate(18deg)}
+  }
+  @keyframes pulseDot{
+    0%,100%{box-shadow:0 0 0 4px rgba(60,203,127,0.2)}
+    50%{box-shadow:0 0 0 8px rgba(60,203,127,0)}
+  }
+  @keyframes scrollDrop{
+    0%{top:-14px;opacity:0}
+    25%{opacity:1}
+    75%{opacity:1}
+    100%{top:42px;opacity:0}
+  }
+  @keyframes shake-f{ 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-5px)} 40%,80%{transform:translateX(5px)} }
+  @keyframes pulse{0%{transform:scale(.85);opacity:.6}100%{transform:scale(1.4);opacity:0}}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
