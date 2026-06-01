@@ -46,10 +46,10 @@
       inset 0 1px 0 rgba(255,255,255,0.6);
     max-width:calc(100vw - 28px);
   }
-  .nav .logo{font-family:'Fredoka',sans-serif;font-weight:700;font-size:18px;letter-spacing:0.5px;display:flex;align-items:center;gap:8px}
+  .nav .logo{font-family:'Fraunces',serif;font-weight:600;font-size:18px;letter-spacing:-0.02em;display:flex;align-items:center;gap:8px}
   .nav .logo .bolt{display:inline-flex;width:26px;height:26px;border-radius:50%;background:var(--blue);align-items:center;justify-content:center;color:var(--ink);font-weight:800}
   .nav ul{list-style:none;display:flex;gap:18px;margin:0;padding:0 8px}
-  .nav ul a{color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+  .nav ul a{color:var(--ink-soft);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s;white-space:nowrap}
   .nav ul a:hover{color:var(--ink)}
   .nav .cta{
     display:inline-flex;align-items:center;gap:8px;
@@ -100,7 +100,14 @@
     transition:max-height .38s cubic-bezier(.2,.8,.2,1), opacity .28s ease;
   }
   .nav-drawer.open{pointer-events:all}
-  .nav-drawer.open .nav-drawer-inner{max-height:460px;opacity:1}
+  .nav-drawer.open .nav-drawer-inner{max-height:520px;opacity:1}
+  .nav-drawer .drawer-brand{
+    display:block;padding:18px 16px 4px;
+    font-size:18px;font-weight:700;letter-spacing:.04em;
+    color:var(--ink);text-decoration:none;
+    text-align:center;
+  }
+  .nav-drawer .drawer-brand:hover{opacity:.7}
   .nav-drawer ul{
     list-style:none;margin:0;padding:16px 16px 8px;
     display:flex;flex-direction:column;gap:2px;
@@ -634,6 +641,15 @@
   .final .right .b2{width:50%;height:60%;background:var(--blue);top:0;right:0;transform:rotate(6deg)}
   .final .right .b3{width:42%;height:50%;background:var(--yellow);bottom:0;right:6%;transform:rotate(-3deg)}
   .final .right .b4{width:24%;height:32%;border-radius:50%;background:var(--lila);bottom:4%;left:6%;transform:rotate(8deg)}
+  .ig-feed-section{padding:80px 0;max-width:1240px;margin:0 auto}
+  .ig-card{display:flex;align-items:center;gap:14px;margin-top:32px;background:rgba(255,251,240,0.08);border:1px solid rgba(255,251,240,0.15);border-radius:18px;padding:16px 20px;max-width:420px}
+  .ig-card-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff}
+  .ig-card-avatar svg{width:26px;height:26px}
+  .ig-card-info{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+  .ig-card-handle{font-weight:700;font-size:15px;color:var(--cream)}
+  .ig-card-bio{font-size:12px;color:rgba(255,251,240,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ig-card-btn{flex-shrink:0;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;font-weight:700;font-size:13px;border-radius:10px;padding:8px 16px;text-decoration:none;white-space:nowrap;transition:opacity .2s}
+  .ig-card-btn:hover{opacity:.85}
 
   /* ----------- socials + footer ----------- */
   .footer{padding:30px 32px 80px;text-align:center}
@@ -935,6 +951,7 @@
     font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;
   }
   .about-portrait .ph-label{background:#fff;padding:7px 14px;border-radius:8px;border:1px dashed rgba(42,33,64,0.2)}
+  .about-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;}
   .about-portrait::before{
     content:"✦";position:absolute;top:-22px;right:-10px;
     font-family:'Fredoka',sans-serif;font-weight:700;color:var(--ink);font-size:42px;

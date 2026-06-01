@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <meta name="theme-color" content="#FFFBF0" />
 <meta name="robots" content="index, follow" />
 
@@ -83,6 +83,64 @@
 }
 </script>
 
+<!-- Structured data — FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿A qué zonas de Buenos Aires llegás?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Trabajo en Capital Federal y Gran Buenos Aires (zona norte, oeste y sur). Para eventos fuera del AMBA consultame por WhatsApp y vemos la posibilidad con viático incluido."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto dura la animación?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El tiempo mínimo es de 2 horas. Según el servicio y la cantidad de actividades, podemos armar propuestas de 2, 3 o más horas. Contame cómo imaginás la fiesta y lo ajustamos a tu evento."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuántos chicos pueden participar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "¡No hay límite! Para grupos grandes (más de 15 niños) te recomiendo sumar una animadora extra para que todos puedan disfrutar sin esperas. Consultame y armamos el equipo ideal para tu evento."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Los materiales para los talleres están incluidos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, llevo todo lo necesario: materiales, herramientas y todo el equipamiento para la actividad. Vos solo ponés el espacio y las ganas de jugar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Con cuánta anticipación tengo que reservar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cuanto antes, mejor. Los fines de semana se reservan rápido, sobre todo en temporada alta. Te recomiendo contactarme con al menos 2 o 3 semanas de anticipación para asegurar tu fecha."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo se confirma la reserva?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La reserva se confirma con una seña. Una vez acordados los detalles por WhatsApp, te paso los datos para hacer la transferencia y la fecha queda asegurada para vos."
+      }
+    }
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,600&family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -103,7 +161,7 @@
 
 <!-- floating nav -->
 <nav class="nav" data-screen-label="nav" style="opacity: 1">
-  <div class="logo">⚡</div>
+  <div class="logo"><span class="bolt">⚡</span> MICALU</div>
   <ul>
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#complementos">Complementos</a></li>
@@ -127,6 +185,7 @@
 <!-- mobile nav drawer -->
 <div class="nav-drawer" id="navDrawer" aria-hidden="true">
   <div class="nav-drawer-inner">
+    <a href="#hero" class="drawer-brand">⚡ MICALU</a>
     <ul>
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#complementos">Complementos</a></li>
@@ -145,7 +204,7 @@
 <main>
 
 <!-- ============= HERO ============= -->
-<section class="hero" data-screen-label="hero">
+<section class="hero" id="hero" data-screen-label="hero">
   <div class="bolt-bg" aria-hidden="true">
     <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
       <path d="M120 0 L20 170 L85 170 L60 300 L180 110 L110 110 Z"/>
@@ -455,8 +514,8 @@
   </div>
 
   <div class="about-grid">
-    <div class="about-portrait" aria-label="Foto de Cami — placeholder">
-      <span class="ph-label">N</span>
+    <div class="about-portrait" aria-label="Foto de Cami">
+      <img src="img/cami_1.jpg" alt="Cami — animadora de Micalú" />
     </div>
 
     <div class="about-copy">
@@ -732,30 +791,9 @@
 </section>
 
 <!-- ============= FINAL CTA ============= -->
-<section style="padding-top:24px;padding-bottom:0">
-  <div class="final" data-screen-label="cta-final">
-    <div>
-      <span class="tag" style="background:rgba(255,251,240,0.12);border-color:rgba(255,251,240,0.18);color:var(--cream)"><span class="dot" style="background:var(--yellow)"></span> ¿Listos para festejar?</span>
-      <h2 style="margin-top:18px">Reservá tu<br>fecha y <span class="italic">jugamos</span>.</h2>
-      <p>Agenda abierta para 2026. Buenos Aires y alrededores. Escribime contándome cómo imaginás la fiesta y armamos algo único.</p>
-      <div class="actions">
-        <a href="https://wa.me/5491122370215" target="_blank" rel="noopener" class="btn btn-primary">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 1.8.8 2.5.8 3.3.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.2.8.8-3.1-.2-.3c-.9-1.4-1.3-3-1.3-4.6 0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8.6-8 8.6z"/></svg>
-          Escribir por WhatsApp
-        </a>
-        <a href="https://instagram.com/micaluanimaciones" target="_blank" rel="noopener" class="btn btn-ghost">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8 4 4 0 0 1 16 11.4z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          Ver Instagram
-        </a>
-      </div>
-    </div>
-    <div class="right" aria-hidden="true">
-      <div class="b b1"></div>
-      <div class="b b2"></div>
-      <div class="b b3"></div>
-      <div class="b b4"></div>
-    </div>
-  </div>
+<section class="ig-feed-section" data-screen-label="cta-final">
+  <script src="https://w.behold.so/widget.js" type="module"></script>
+  <behold-widget feed-id="TU_FEED_ID_AQUI"></behold-widget>
 </section>
 
 <!-- ============= FOOTER ============= -->
